@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draft 1: Frame Scrub (Apple/Nike Style) | Run Club</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF5722'><path d='M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z'/></svg>">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       THEME: Deep Obsidian / Midnight Dark
+       ========================================================================== */
+    :root {
+      --color-canvas: #0A0D0C;
+      --color-surface: #141916;
+      --color-surface-elevated: #1B221E;
+      --color-border: rgba(255, 255, 255, 0.08);
+      --color-border-hover: rgba(255, 87, 34, 0.4);
+      
+      --color-text-main: #F2F5F3;
+      --color-text-muted: #9EAAA1;
+      --color-text-dim: #647068;
+      
+      --color-accent: #FF5722;
+      --color-accent-hover: #FF7043;
+      --color-accent-glow: rgba(255, 87, 34, 0.25);
+      
+      --color-neon-citron: #D4FF32;
+      --color-tag-bg: rgba(212, 255, 50, 0.1);
+      --color-tag-text: #D4FF32;
+
+      --color-placeholder-bg: rgba(255, 179, 0, 0.12);
+      --color-placeholder-border: rgba(255, 179, 0, 0.4);
+      --color-placeholder-text: #FFD54F;
+
+      --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --max-width: 1120px;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 9999px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--color-canvas);
+      color: var(--color-text-main);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      overflow-wrap: break-word;
+    }
+
+    /* Pinned Top Scroll Progress */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-neon-citron));
+      width: 0%;
+      z-index: 99999;
+      pointer-events: none;
+    }
+
+    /* Navigation */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 1.5rem;
+      background: rgba(10, 13, 12, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--color-text-main);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon {
+      width: 26px;
+      height: 26px;
+      fill: var(--color-accent);
+    }
+
+    .nav-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.85rem;
+      background-color: var(--color-tag-bg);
+      color: var(--color-tag-text);
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(212, 255, 50, 0.2);
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--color-neon-citron);
+      box-shadow: 0 0 8px var(--color-neon-citron);
+    }
+
+    /* Placeholder Chips */
+    .placeholder {
+      display: inline-block;
+      background-color: var(--color-placeholder-bg);
+      color: var(--color-placeholder-text);
+      border: 1px dashed var(--color-placeholder-border);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    /* Universal CTA Button */
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: var(--color-accent);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 1.05rem 2.25rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px var(--color-accent-glow);
+      transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      min-height: 52px;
+      min-width: 220px;
+    }
+
+    .btn-cta:hover {
+      background-color: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 87, 34, 0.45);
+    }
+
+    .btn-cta:active {
+      transform: translateY(1px);
+    }
+
+    /* ==========================================================================
+       APPROACH 1: PINNED CANVAS FRAME SCRUB HERO
+       ========================================================================== */
+    .hero-scrub-container {
+      position: relative;
+      height: 220vh; /* Pinned scroll track */
+      background-color: var(--color-canvas);
+    }
+
+    .hero-sticky-frame {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Canvas background where runner is drawn */
+    #runner-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Subtle Dark Vignette overlay so text is 100% readable */
+    .canvas-overlay-vignette {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(10, 13, 12, 0.3) 0%, rgba(10, 13, 12, 0.85) 80%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Hero Text Content Layer */
+    .hero-overlay-content {
+      position: relative;
+      z-index: 3;
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.35rem, 5vw + 1rem, 4rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+      margin-bottom: 1.25rem;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-subhead {
+      font-size: 1.25rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-support-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--color-neon-citron);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .scrub-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-dim);
+      pointer-events: none;
+    }
+
+    .mouse-wheel {
+      width: 20px;
+      height: 32px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .mouse-dot {
+      width: 4px;
+      height: 6px;
+      background-color: var(--color-accent);
+      border-radius: 2px;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: wheelMove 1.5s infinite ease-in-out;
+    }
+
+    @keyframes wheelMove {
+      0% { transform: translate(-50%, 0); opacity: 1; }
+      100% { transform: translate(-50%, 12px); opacity: 0; }
+    }
+
+    /* ==========================================================================
+       SECTION 2: REASSURANCE (DARK THEME)
+       ========================================================================== */
+    .section-spacing {
+      padding: 6rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+    }
+
+    .section-header-block {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.85rem, 3.5vw + 0.5rem, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+      color: #FFFFFF;
+    }
+
+    .section-header-block p {
+      color: var(--color-text-muted);
+      font-size: 1.15rem;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .reassurance-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .reassurance-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-border-hover);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background-color: var(--color-surface-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--color-border);
+    }
+
+    .card-icon {
+      width: 24px;
+      height: 24px;
+      fill: var(--color-accent);
+    }
+
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.65rem;
+    }
+
+    .card p {
+      color: var(--color-text-muted);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    /* Modal */
+    dialog {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      max-width: 480px;
+      width: 90%;
+      margin: auto;
+      background-color: var(--color-surface);
+      color: var(--color-text-main);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    dialog::backdrop {
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(4px);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+
+  <!-- Navigation -->
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a href="#" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/>
+        </svg>
+        <span>Run Club <span class="placeholder">[PLACEHOLDER - City]</span></span>
+      </a>
+      <div class="nav-badge">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span>Draft 1: Apple Frame Scrub</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================
+         HERO SECTION: PINNED RUNNER CANVAS SCRUB
+         ======================================================================== -->
+    <section class="hero-scrub-container" id="hero-scrub">
+      <div class="hero-sticky-frame">
+        <!-- Canvas receives runner animation scrubbed by scroll -->
+        <canvas id="runner-canvas"></canvas>
+        <div class="canvas-overlay-vignette"></div>
+
+        <div class="hero-overlay-content">
+          <h1 id="hero-title">Run 20 minutes without stopping. 30 days from now.</h1>
+          <p class="hero-subhead">
+            A beginner running group in <span class="placeholder">[PLACEHOLDER - City]</span>. We start slow, we take regular walking breaks, and nobody gets left behind.
+          </p>
+          <div class="hero-support-line">
+            <span>● Zero running experience needed. Everyday trainers are plenty.</span>
+          </div>
+          <div>
+            <button type="button" class="btn-cta open-modal-btn">
+              Join the Run Club
+            </button>
+            <div style="margin-top: 0.85rem; font-size: 0.95rem; color: var(--color-text-dim);">
+              Next group starts <span class="placeholder">[PLACEHOLDER - Start Date]</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scrub-indicator">
+          <div class="mouse-wheel"><div class="mouse-dot"></div></div>
+          <span>Scroll to scrub stride</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 2: REASSURANCE
+         ======================================================================== -->
+    <section class="section-spacing" id="reassurance">
+      <div class="section-header-block">
+        <h2>Worried you are too slow? Read this first.</h2>
+        <p>
+          Most people quit running because they sprint out the door on day one, burn out their lungs in two minutes, and feel terrible. Here is how we do it:
+        </p>
+      </div>
+
+      <div class="reassurance-grid">
+        <div class="card">
+          <div class="card-icon-wrap">
+            <svg class="card-icon" viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/></svg>
+          </div>
+          <h3>Walking is built into the plan.</h3>
+          <p>
+            When the watch says walk, everyone walks. That is how you build stamina without feeling awful. Walk breaks are scheduled and celebrated.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-wrap">
+            <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          </div>
+          <h3>Nobody gets left behind.</h3>
+          <p>
+            A coach stays at the very back of the pack the whole time. You will never be running on your own or holding anyone up.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-wrap">
+            <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          </div>
+          <h3>Wear what you have.</h3>
+          <p>
+            You do not need expensive running gear or a certain body type. Normal trainers and comfortable clothes are plenty.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <button type="button" class="btn-cta open-modal-btn">
+          Join the Run Club
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="cta-modal">
+    <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.75rem; color: #FFFFFF;">Join the Beginner Cohort</h3>
+    <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">
+      Sign-ups for <span class="placeholder">[PLACEHOLDER - City]</span> are managed directly through our registration form:
+    </p>
+    <div style="background-color: var(--color-surface-elevated); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem; word-break: break-all;">
+      <span class="placeholder">[PLACEHOLDER - Sign Up Link or Form Embed]</span>
+    </div>
+    <button type="button" class="btn-cta" style="width: 100%;" onclick="document.getElementById('cta-modal').close()">
+      Got It, Thanks
+    </button>
+  </dialog>
+
+  <!-- Pinned GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // Modal Handling
+    const modal = document.getElementById('cta-modal');
+    document.querySelectorAll('.open-modal-btn').forEach(btn => {
+      btn.addEventListener('click', () => modal.showModal());
+    });
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+
+    // GSAP ScrollTrigger Canvas Kinematic Runner
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Top scroll progress
+      gsap.to("#scroll-progress", {
+        width: "100%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.1
+        }
+      });
+
+      // Canvas Setup
+      const canvas = document.getElementById('runner-canvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      // Kinematic Runner Simulation State
+      const runner = {
+        cycle: 0,       // 0 to 1 running gait cycle
+        xProgress: 0.15 // screen horizontal travel
+      };
+
+      // Draw biomechanical runner in dark obsidian space with luminous accents
+      function drawRunner(t, xOffset) {
+        ctx.clearRect(0, 0, width, height);
+
+        // Ground perspective grid in dark obsidian
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
+        ctx.lineWidth = 1;
+        const groundY = height * 0.72;
+        ctx.beginPath();
+        ctx.moveTo(0, groundY);
+        ctx.lineTo(width, groundY);
+        ctx.stroke();
+
+        // Runner root coordinates
+        const scale = Math.min(width, height) / 800;
+        const cx = width * (0.25 + xOffset * 0.5);
+        const cy = groundY - 140 * scale;
+
+        // Kinematic angles based on cycle
+        const hipBob = Math.sin(t * Math.PI * 2 * 2) * 8 * scale;
+        const rootY = cy + hipBob;
+
+        const leftLegPhase = t * Math.PI * 2;
+        const rightLegPhase = leftLegPhase + Math.PI;
+
+        // Luminous Amber Glow under runner
+        const glowGrad = ctx.createRadialGradient(cx, groundY, 10, cx, groundY, 180 * scale);
+        glowGrad.addColorStop(0, "rgba(255, 87, 34, 0.28)");
+        glowGrad.addColorStop(1, "rgba(255, 87, 34, 0)");
+        ctx.fillStyle = glowGrad;
+        ctx.beginPath();
+        ctx.arc(cx, groundY, 180 * scale, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Foot strike particle sparks
+        const strikeLeft = Math.abs(Math.sin(leftLegPhase)) < 0.15;
+        const strikeRight = Math.abs(Math.sin(rightLegPhase)) < 0.15;
+        if (strikeLeft || strikeRight) {
+          ctx.fillStyle = "rgba(212, 255, 50, 0.6)";
+          for (let p = 0; p < 6; p++) {
+            ctx.beginPath();
+            ctx.arc(cx - 40 * scale - p * 8, groundY + (Math.random() - 0.5) * 6, 2.5 * scale, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // Draw Leg Helper
+        function drawLeg(phase, isForeground) {
+          const hipX = cx;
+          const hipY = rootY + 20 * scale;
+
+          // Leg kinematics
+          const kneeAngle = Math.sin(phase) * 0.8 + 0.6;
+          const kneeX = hipX + Math.sin(phase) * 45 * scale;
+          const kneeY = hipY + Math.cos(kneeAngle) * 55 * scale;
+
+          const footAngle = Math.sin(phase - 0.5) * 0.9;
+          const footX = kneeX + Math.sin(footAngle) * 50 * scale;
+          const footY = Math.min(groundY, kneeY + Math.cos(footAngle) * 50 * scale);
+
+          ctx.strokeStyle = isForeground ? "#FF7043" : "rgba(150, 165, 155, 0.5)";
+          ctx.lineWidth = (isForeground ? 10 : 8) * scale;
+          ctx.lineCap = "round";
+          ctx.lineJoin = "round";
+
+          // Upper leg
+          ctx.beginPath();
+          ctx.moveTo(hipX, hipY);
+          ctx.lineTo(kneeX, kneeY);
+          ctx.lineTo(footX, footY);
+          ctx.stroke();
+
+          // Shoe (Neon Accent)
+          ctx.strokeStyle = isForeground ? "#D4FF32" : "#FF5722";
+          ctx.lineWidth = 8 * scale;
+          ctx.beginPath();
+          ctx.moveTo(footX - 10 * scale, footY);
+          ctx.lineTo(footX + 16 * scale, footY);
+          ctx.stroke();
+        }
+
+        // Draw background leg
+        drawLeg(rightLegPhase, false);
+
+        // Torso & Head
+        const torsoAngle = 0.22; // forward athletic lean
+        const chestX = cx + Math.sin(torsoAngle) * 70 * scale;
+        const chestY = rootY - Math.cos(torsoAngle) * 70 * scale;
+
+        ctx.strokeStyle = "#F2F5F3";
+        ctx.lineWidth = 14 * scale;
+        ctx.beginPath();
+        ctx.moveTo(cx, rootY);
+        ctx.lineTo(chestX, chestY);
+        ctx.stroke();
+
+        // Head
+        const headX = chestX + 14 * scale;
+        const headY = chestY - 26 * scale;
+        ctx.fillStyle = "#FFFFFF";
+        ctx.beginPath();
+        ctx.arc(headX, headY, 14 * scale, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Foreground leg
+        drawLeg(leftLegPhase, true);
+
+        // Arms
+        function drawArm(phase, isForeground) {
+          const shoulderX = chestX - 4 * scale;
+          const shoulderY = chestY + 10 * scale;
+
+          const elbowAngle = Math.sin(phase) * 0.9;
+          const elbowX = shoulderX + Math.sin(elbowAngle) * 35 * scale;
+          const elbowY = shoulderY + Math.cos(elbowAngle) * 35 * scale;
+
+          const handAngle = elbowAngle + 1.2;
+          const handX = elbowX + Math.cos(handAngle) * 30 * scale;
+          const handY = elbowY - Math.sin(handAngle) * 30 * scale;
+
+          ctx.strokeStyle = isForeground ? "#FFFFFF" : "rgba(150, 165, 155, 0.4)";
+          ctx.lineWidth = (isForeground ? 7 : 5) * scale;
+          ctx.beginPath();
+          ctx.moveTo(shoulderX, shoulderY);
+          ctx.lineTo(elbowX, elbowY);
+          ctx.lineTo(handX, handY);
+          ctx.stroke();
+        }
+
+        drawArm(rightLegPhase, false);
+        drawArm(leftLegPhase, true);
+      }
+
+      // Initial render
+      drawRunner(0, 0);
+
+      // Link runner cycle to ScrollTrigger (Apple scrub style)
+      gsap.to(runner, {
+        cycle: 4,          // 4 full strides
+        xProgress: 0.5,    // moves across screen
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#hero-scrub",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.4,
+          onUpdate: () => {
+            drawRunner(runner.cycle % 1, runner.xProgress);
+          }
+        }
+      });
+
+      // Subtle Hero Text parallax shift during scrub
+      gsap.to(".hero-overlay-content", {
+        y: -60,
+        opacity: 0.35,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#hero-scrub",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.4
+        }
+      });
+    }
+  </script>
+</body>
+</html>

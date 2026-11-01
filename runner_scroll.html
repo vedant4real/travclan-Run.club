@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Runner 24fps Scroll Animation (Standalone Preview)</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background-color: #0c0e11;
+      color: #f2f5f3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-color: #0c0e11;
+    }
+
+    /* Custom Sleek Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 87, 34, 0.4);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 87, 34, 0.7);
+    }
+
+    /* Top Progress Bar */
+    .top-loader-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #ff5722, #ff9100, #d4ff32);
+      box-shadow: 0 0 10px rgba(255, 87, 34, 0.8);
+      z-index: 1000;
+      pointer-events: none;
+      transition: width 0.15s ease-out, opacity 0.5s ease 0.3s;
+    }
+
+    .top-loader-bar.done {
+      opacity: 0;
+    }
+
+    /* Floating HUD Badge */
+    .hud-badge {
+      position: fixed;
+      top: 1.25rem;
+      left: 1.5rem;
+      z-index: 100;
+      background: rgba(12, 14, 17, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      padding: 0.45rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .hud-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #d4ff32;
+      box-shadow: 0 0 8px #d4ff32;
+    }
+
+    .frame-counter {
+      color: #9eaaa1;
+      font-variant-numeric: tabular-nums;
+      font-family: monospace;
+    }
+
+    /* Scroll Prompt at bottom */
+    .scroll-prompt {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(12, 14, 17, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      padding: 0.5rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9eaaa1;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .mouse-icon {
+      width: 14px;
+      height: 22px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .mouse-wheel {
+      width: 3px;
+      height: 5px;
+      background: #ff5722;
+      border-radius: 2px;
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: wheelMove 1.4s infinite ease-in-out;
+    }
+
+    @keyframes wheelMove {
+      0% { transform: translate(-50%, 0); opacity: 1; }
+      100% { transform: translate(-50%, 8px); opacity: 0; }
+    }
+
+    /* Scroll Container (Controls total scroll length: 700vh gives smooth pacing for 239 frames) */
+    .scroll-wrapper {
+      position: relative;
+      height: 700vh;
+      width: 100%;
+    }
+
+    /* Sticky Canvas Viewport */
+    .canvas-viewport {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0c0e11;
+      transform: translateZ(0);
+    }
+
+    #sequence-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="loader-bar" class="top-loader-bar"></div>
+
+  <div class="hud-badge">
+    <div class="hud-dot"></div>
+    <span>Runner 24fps</span>
+    <span class="frame-counter" id="frame-display">001 / 239</span>
+  </div>
+
+  <div class="scroll-prompt" id="scroll-prompt">
+    <div class="mouse-icon"><div class="mouse-wheel"></div></div>
+    <span>Scroll to play</span>
+  </div>
+
+  <div id="scroll-wrapper" class="scroll-wrapper">
+    <div class="canvas-viewport">
+      <canvas id="sequence-canvas"></canvas>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      // CONFIGURATION: 239 frames extracted from runner_video_frames_24fps
+      const TOTAL_FRAMES = 239;
+      // Inertia smoothness factor (0.08 = silky, weighted cinematic glide)
+      const LERP_FACTOR = 0.09;
+
+      function getFrameSrc(index) {
+        const frameNum = String(index + 1).padStart(4, '0');
+        return `runner_video_frames_24fps/frame_${frameNum}.jpg`;
+      }
+
+      // Elements
+      const canvas = document.getElementById('sequence-canvas');
+      const ctx = canvas.getContext('2d', { alpha: false });
+      const loaderBar = document.getElementById('loader-bar');
+      const scrollWrapper = document.getElementById('scroll-wrapper');
+      const frameDisplay = document.getElementById('frame-display');
+      const scrollPrompt = document.getElementById('scroll-prompt');
+
+      // State
+      const images = new Array(TOTAL_FRAMES);
+      let loadedCount = 0;
+      let targetIndex = 0;
+      let currentIndex = 0;
+      let lastDrawnIndex = -1;
+      let lastDrawnWasExact = false;
+      let isAllLoaded = false;
+
+      function handleResize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const displayWidth = window.innerWidth;
+        const displayHeight = window.innerHeight;
+
+        const targetWidth = Math.round(displayWidth * dpr);
+        const targetHeight = Math.round(displayHeight * dpr);
+
+        if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
+          canvas.width = targetWidth;
+          canvas.height = targetHeight;
+          lastDrawnIndex = -1;
+        }
+      }
+
+      function getBestAvailableImage(idx) {
+        if (images[idx] && images[idx].complete && images[idx].naturalWidth > 0) {
+          return { img: images[idx], isExact: true, actualIndex: idx };
+        }
+        for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+          const prev = idx - offset;
+          if (prev >= 0 && images[prev]?.complete && images[prev]?.naturalWidth > 0) {
+            return { img: images[prev], isExact: false, actualIndex: prev };
+          }
+          const next = idx + offset;
+          if (next < TOTAL_FRAMES && images[next]?.complete && images[next]?.naturalWidth > 0) {
+            return { img: images[next], isExact: false, actualIndex: next };
+          }
+        }
+        return { img: null, isExact: false, actualIndex: -1 };
+      }
+
+      function renderFrame(index) {
+        const { img, isExact, actualIndex } = getBestAvailableImage(index);
+        if (!img) return;
+
+        const cW = canvas.width;
+        const cH = canvas.height;
+        const iW = img.naturalWidth;
+        const iH = img.naturalHeight;
+
+        if (!iW || !iH) return;
+
+        // Full-bleed aspect-ratio cover math
+        const scale = Math.max(cW / iW, cH / iH);
+        const drawW = iW * scale;
+        const drawH = iH * scale;
+        const drawX = (cW - drawW) * 0.5;
+        const drawY = (cH - drawH) * 0.5;
+
+        ctx.drawImage(img, drawX, drawY, drawW, drawH);
+
+        lastDrawnIndex = index;
+        lastDrawnWasExact = isExact;
+
+        // Update HUD
+        const displayNum = String((actualIndex >= 0 ? actualIndex : index) + 1).padStart(3, '0');
+        frameDisplay.textContent = `${displayNum} / 239`;
+      }
+
+      function preloadImages() {
+        // Load first frame immediately for instant first paint
+        const firstImg = new Image();
+        firstImg.src = getFrameSrc(0);
+        images[0] = firstImg;
+
+        firstImg.onload = () => {
+          loadedCount++;
+          handleResize();
+          renderFrame(0);
+          loadRemainingFrames();
+        };
+
+        firstImg.onerror = () => {
+          console.error('Failed to load initial frame:', firstImg.src);
+          loadRemainingFrames();
+        };
+      }
+
+      function loadRemainingFrames() {
+        const batchSize = 10;
+        let nextIndex = 1;
+
+        function loadBatch() {
+          const limit = Math.min(nextIndex + batchSize, TOTAL_FRAMES);
+
+          for (let i = nextIndex; i < limit; i++) {
+            const img = new Image();
+            img.src = getFrameSrc(i);
+
+            img.onload = () => {
+              loadedCount++;
+              updateProgress();
+            };
+
+            img.onerror = () => {
+              loadedCount++;
+              updateProgress();
+            };
+
+            images[i] = img;
+          }
+
+          nextIndex = limit;
+
+          if (nextIndex < TOTAL_FRAMES) {
+            requestAnimationFrame(loadBatch);
+          }
+        }
+
+        loadBatch();
+      }
+
+      function updateProgress() {
+        const progress = (loadedCount / TOTAL_FRAMES) * 100;
+        loaderBar.style.width = `${progress}%`;
+
+        if (loadedCount >= TOTAL_FRAMES && !isAllLoaded) {
+          isAllLoaded = true;
+          loaderBar.classList.add('done');
+        }
+      }
+
+      function onScroll() {
+        const maxScroll = scrollWrapper.offsetHeight - window.innerHeight;
+        const scrollY = Math.max(0, Math.min(window.scrollY, maxScroll));
+        const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+
+        targetIndex = Math.min(Math.floor(progress * TOTAL_FRAMES), TOTAL_FRAMES - 1);
+
+        if (scrollY > 100 && scrollPrompt) {
+          scrollPrompt.style.opacity = '0';
+        } else if (scrollPrompt) {
+          scrollPrompt.style.opacity = '1';
+        }
+      }
+
+      function tick() {
+        // Smooth LERP glide towards target scroll frame
+        const delta = targetIndex - currentIndex;
+        currentIndex += delta * LERP_FACTOR;
+
+        const roundedIndex = Math.round(currentIndex);
+
+        if (roundedIndex !== lastDrawnIndex || !lastDrawnWasExact) {
+          renderFrame(roundedIndex);
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      // Event Listeners
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', () => {
+        handleResize();
+        lastDrawnIndex = -1;
+      }, { passive: true });
+
+      // Init
+      handleResize();
+      preloadImages();
+      requestAnimationFrame(tick);
+    })();
+  </script>
+</body>
+</html>

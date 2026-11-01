@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run Club – Start Running in 30 Days | Delhi (Connaught Place)</title>
+  <meta name="description" content="A beginner-friendly running club in Delhi (Connaught Place). Start running for 20 minutes continuously in 30 days. Slow pace, walking breaks, and no one left behind.">
+  <link rel="canonical" href="https://runclubdelhi.com">
+  
+  <!-- Social Media & Sharing Meta Tags -->
+  <meta property="og:title" content="Run Club – Start Running in 30 Days | Delhi (Connaught Place)">
+  <meta property="og:description" content="Learn to run 20 minutes continuously in 30 days. Built for complete beginners in Delhi (Connaught Place).">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://runclubdelhi.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Run Club – Start Running in 30 Days | Delhi (Connaught Place)">
+  <meta name="twitter:description" content="A warm, beginner running group in Connaught Place, Delhi. We start slow and nobody gets left behind.">
+
+  <!-- Favicon (Inline SVG Runner Icon) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF5722'><path d='M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z'/></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans for headings, Inter for high-legibility body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM: Modern Obsidian Dark & Kinetic Amber
+       ========================================================================== */
+    :root {
+      /* Deep Obsidian Palette */
+      --color-canvas: #090B0E;
+      --color-surface: #12161A;
+      --color-surface-elevated: #181E24;
+      --color-surface-card: #151A1F;
+      --color-border: rgba(255, 255, 255, 0.08);
+      --color-border-hover: rgba(255, 87, 34, 0.4);
+      
+      --color-text-main: #F2F5F3;
+      --color-text-muted: #9EAAA1;
+      --color-text-dim: #647068;
+      
+      --color-accent: #FF5722;
+      --color-accent-hover: #FF7043;
+      --color-accent-active: #E64A19;
+      --color-accent-glow: rgba(255, 87, 34, 0.35);
+      
+      --color-neon-citron: #D4FF32;
+      --color-tag-bg: rgba(212, 255, 50, 0.1);
+      --color-tag-text: #D4FF32;
+
+      /* Typography */
+      --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      /* Spacing Scale */
+      --space-xs: 0.5rem;   /* 8px */
+      --space-sm: 1rem;     /* 16px */
+      --space-md: 1.5rem;   /* 24px */
+      --space-lg: 2.5rem;   /* 40px */
+      --space-xl: 4.5rem;   /* 72px */
+      --space-2xl: 6rem;    /* 96px */
+
+      /* Layout */
+      --max-width: 1180px;
+      --max-width-narrow: 760px;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 9999px;
+
+      /* Elevation */
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.8);
+
+      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--color-canvas);
+      color: var(--color-text-main);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-wrap: break-word;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      padding-bottom: 74px; /* Space for mobile sticky CTA */
+      background-color: var(--color-canvas);
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-bottom: 0;
+      }
+    }
+
+    /* Accessibility: Respect Reduced Motion Preferences */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      #scroll-progress {
+        display: none !important;
+      }
+    }
+
+    /* Pinned Top Scroll Progress */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-neon-citron));
+      width: 0%;
+      z-index: 99999;
+      pointer-events: none;
+    }
+
+    /* Top Preload Progress Bar */
+    .top-loader-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #ff5722, #ff9100, #d4ff32);
+      box-shadow: 0 0 12px rgba(255, 87, 34, 0.9);
+      z-index: 100000;
+      pointer-events: none;
+      transition: width 0.15s ease-out, opacity 0.5s ease 0.3s;
+    }
+
+    .top-loader-bar.done {
+      opacity: 0;
+    }
+
+    /* Accessibility Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--color-accent);
+      color: #FFFFFF;
+      padding: 0.75rem 1.25rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      z-index: 9999;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--color-accent);
+      outline-offset: 3px;
+    }
+
+    /* Typography Scale */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--color-text-main);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    h1 {
+      font-size: clamp(1.85rem, 4.5vw + 0.8rem, 3.65rem);
+      font-weight: 800;
+      margin-bottom: var(--space-sm);
+      color: #FFFFFF;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3.5vw + 0.5rem, 2.75rem);
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+      color: #FFFFFF;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+      color: #FFFFFF;
+    }
+
+    p {
+      color: var(--color-text-muted);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+
+    /* Container Utility */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .container-narrow {
+      max-width: var(--max-width-narrow);
+    }
+
+    /* Navigation Bar */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--color-border);
+      background-color: rgba(9, 11, 14, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--color-text-main);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+      fill: var(--color-accent);
+    }
+
+    .nav-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.85rem;
+      background-color: var(--color-tag-bg);
+      color: var(--color-tag-text);
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(212, 255, 50, 0.2);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--color-neon-citron);
+      box-shadow: 0 0 10px var(--color-neon-citron);
+    }
+
+    /* Universal CTA Button */
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: var(--color-accent);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 1.05rem 2.25rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px var(--color-accent-glow);
+      transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+      min-height: 52px;
+      min-width: 220px;
+      text-align: center;
+      will-change: transform;
+    }
+
+    .btn-cta:hover {
+      background-color: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 87, 34, 0.5);
+    }
+
+    .btn-cta:active {
+      background-color: var(--color-accent-active);
+      transform: translateY(1px);
+    }
+
+    .btn-cta-large {
+      font-size: 1.25rem;
+      padding: 1.2rem 2.5rem;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    /* Section Spacing */
+    .section-spacing {
+      padding: var(--space-xl) 0;
+    }
+
+    .section-header-block {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .section-header-block p {
+      max-width: 620px;
+      margin: var(--space-xs) auto 0 auto;
+      font-size: 1.15rem;
+    }
+
+    /* ==========================================================================
+       SECTIONS 1 & 2: DUAL-PAGE NARRATIVE WRAPPER (HERO + REASSURANCE)
+       Single continuous page flow from top to bottom.
+       The 130-frame runner is sticky on the right, covering both sections!
+       ========================================================================== */
+    .hero-reassurance-wrapper {
+      padding: var(--space-xl) 0 var(--space-2xl) 0;
+      background: radial-gradient(circle at 75% 20%, rgba(255, 87, 34, 0.08) 0%, transparent 60%), var(--color-canvas);
+      border-bottom: 1px solid var(--color-border);
+      position: relative;
+    }
+
+    .hero-narrative-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    @media (min-width: 960px) {
+      .hero-narrative-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 4rem;
+        align-items: stretch;
+      }
+      .narrative-left-flow {
+        display: flex;
+        flex-direction: column;
+        gap: 6rem; /* Natural breathing room between Section 1 and Section 2 */
+      }
+      .narrative-right-sticky {
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .integrated-runner-frame {
+        position: sticky;
+        top: 5rem;
+        width: 100%;
+        max-width: 420px;
+        max-height: calc(100vh - 6.5rem);
+        aspect-ratio: 9 / 16;
+        background: #090B0E;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    /* Mobile Single-Column Flow */
+    @media (max-width: 959px) {
+      .narrative-left-flow {
+        display: contents;
+      }
+      .hero-block {
+        order: 1;
+      }
+      .narrative-right-sticky {
+        order: 2;
+        margin: 1.5rem auto 2.5rem auto;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+      .reassurance-block {
+        order: 3;
+        padding-top: var(--space-md);
+        border-top: 1px solid var(--color-border);
+      }
+      .integrated-runner-frame {
+        width: 100%;
+        max-width: min(340px, 86vw);
+        aspect-ratio: 9 / 16;
+        background: #090B0E;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    /* Small Mobile (< 480px) Polish */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+      .card {
+        padding: 1.15rem;
+      }
+      .btn-cta {
+        width: 100%;
+        max-width: 100%;
+        min-width: unset;
+        padding: 1rem 1.25rem;
+        font-size: 1.05rem;
+      }
+      .hero-proof-strip {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+
+    .hero-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-subhead {
+      font-size: 1.25rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-md);
+      line-height: 1.6;
+    }
+
+    .hero-support-line {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--color-neon-citron);
+      font-weight: 600;
+      margin-bottom: var(--space-md);
+      font-size: 1.05rem;
+    }
+
+    .hero-cta-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .hero-date-note {
+      font-size: 0.95rem;
+      color: var(--color-text-dim);
+    }
+
+    .hero-proof-strip {
+      margin-top: var(--space-lg);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem var(--space-md);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--color-border);
+      width: 100%;
+    }
+
+    .proof-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+    }
+
+    .proof-icon {
+      width: 18px;
+      height: 18px;
+      fill: var(--color-neon-citron);
+    }
+
+    /* Reassurance Eyebrow & Cards */
+    .stage-eyebrow {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      background: rgba(255, 87, 34, 0.1);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: 0.65rem;
+      border: 1px solid rgba(255, 87, 34, 0.2);
+    }
+
+    .reassurance-block h2 {
+      margin-bottom: 0.65rem;
+    }
+
+    .reassurance-block > p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .reassurance-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    #hero-runner-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #090B0E;
+      pointer-events: none;
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background-color: var(--color-surface-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-sm);
+      border: 1px solid var(--color-border);
+    }
+
+    .card-icon {
+      width: 24px;
+      height: 24px;
+      fill: var(--color-accent);
+    }
+
+    /* ==========================================================================
+       SECTION 3: FIRST SESSION (TIMELINE)
+       ========================================================================== */
+    .timeline-container {
+      max-width: 720px;
+      margin: 0 auto var(--space-lg) auto;
+      position: relative;
+    }
+
+    .timeline-step {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+      position: relative;
+    }
+
+    .timeline-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-badge-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .timeline-time-badge {
+      background-color: var(--color-surface-elevated);
+      border: 1px solid var(--color-border);
+      color: var(--color-neon-citron);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+
+    .timeline-connector {
+      width: 2px;
+      flex-grow: 1;
+      background-color: var(--color-border);
+      margin-top: 0.5rem;
+    }
+
+    .timeline-step:last-child .timeline-connector {
+      display: none;
+    }
+
+    .timeline-body {
+      background-color: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      flex-grow: 1;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timeline-body h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .mid-cta-block {
+      text-align: center;
+      margin-top: var(--space-md);
+    }
+
+    /* ==========================================================================
+       SECTION 4: 30-DAY PLAN (LADDER)
+       ========================================================================== */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    @media (min-width: 768px) {
+      .plan-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .plan-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .plan-card {
+      background-color: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .plan-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .week-chip {
+      align-self: flex-start;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-accent);
+      background-color: rgba(255, 87, 34, 0.12);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-sm);
+    }
+
+    .plan-card-finish {
+      border: 2px solid var(--color-accent);
+      background: linear-gradient(180deg, var(--color-surface-card) 0%, rgba(255, 87, 34, 0.08) 100%);
+    }
+
+    /* ==========================================================================
+       SECTION 5: WHAT YOU GET
+       ========================================================================== */
+    .included-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    @media (min-width: 860px) {
+      .included-layout {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+    }
+
+    .included-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .included-item {
+      display: flex;
+      gap: 0.85rem;
+      background-color: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .item-check-icon {
+      width: 22px;
+      height: 22px;
+      fill: var(--color-neon-citron);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .pricing-card {
+      background-color: var(--color-surface);
+      border: 2px solid var(--color-border-hover);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      position: relative;
+    }
+
+    .pricing-badge {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #FFFFFF;
+      background-color: var(--color-accent);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-pill);
+      display: inline-block;
+      margin-bottom: var(--space-sm);
+    }
+
+    .price-value {
+      margin: var(--space-sm) 0;
+    }
+
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .pricing-card p {
+      font-size: 0.95rem;
+      margin-bottom: var(--space-md);
+    }
+
+    /* ==========================================================================
+       SECTION 6: COMMON QUESTIONS (FAQ)
+       ========================================================================== */
+    .faq-container {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      background-color: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: border-color var(--transition-fast);
+    }
+
+    .faq-summary {
+      padding: 1.25rem;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    .faq-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-arrow {
+      width: 18px;
+      height: 18px;
+      fill: var(--color-text-muted);
+      transition: transform var(--transition-fast), fill var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    details[open] .faq-arrow {
+      transform: rotate(180deg);
+      fill: var(--color-accent);
+    }
+
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      color: var(--color-text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* ==========================================================================
+       SECTION 7: CLOSING CALL TO ACTION
+       ========================================================================== */
+    .cta-section {
+      background: radial-gradient(circle at 50% 50%, rgba(255, 87, 34, 0.1) 0%, var(--color-canvas) 80%);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-box p {
+      font-size: 1.2rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-cohort-note {
+      margin-top: var(--space-sm);
+      font-size: 0.95rem;
+      color: var(--color-text-dim);
+    }
+
+    /* ==========================================================================
+       SECTION 8: FOOTER
+       ========================================================================== */
+    .site-footer {
+      padding: var(--space-lg) 0;
+      background-color: var(--color-canvas);
+      font-size: 0.95rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1.5fr 1fr;
+      }
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--color-text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-bottom {
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: var(--color-text-dim);
+      font-size: 0.85rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    /* ==========================================================================
+       MOBILE STICKY CTA BAR
+       ========================================================================== */
+    .mobile-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(18, 22, 26, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--color-border);
+      padding: 0.65rem 1rem;
+      padding-bottom: max(0.65rem, env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+      transform: translateY(100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .mobile-sticky-bar.visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .sticky-bar-text {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      line-height: 1.2;
+    }
+
+    .sticky-bar-sub {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+
+    .btn-sticky {
+      min-width: auto;
+      min-height: 48px;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-sticky-bar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pinned Top Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <div id="loader-bar" class="top-loader-bar"></div>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Navigation & Brand Bar -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="brand-logo" aria-label="Run Club home">
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/>
+        </svg>
+        <span>Run Club Delhi (CP)</span>
+      </a>
+      <div class="nav-badge">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span>Beginner Cohort Open</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ========================================================================
+         SECTIONS 1 & 2: SEAMLESS NARRATIVE FLOW (HERO + REASSURANCE)
+         Single continuous scrollable layout from top to bottom.
+         The right-hand runner frame stays sticky at eye level across Section 1 & 2!
+         ======================================================================== -->
+    <section id="hero-reassurance-wrapper" class="hero-reassurance-wrapper">
+      <div class="container">
+        <div class="hero-narrative-grid">
+          
+          <!-- LEFT COLUMN: SECTION 1 (HERO) & SECTION 2 (REASSURANCE) IN NATURAL TOP-TO-BOTTOM FLOW -->
+          <div class="narrative-left-flow">
+            
+            <!-- SECTION 1: HERO -->
+            <div id="hero" class="hero-block" aria-labelledby="hero-title">
+              <h1 id="hero-title">Run 20 minutes without stopping. 30 days from now.</h1>
+              <p class="hero-subhead">
+                A beginner running group in Connaught Place, Delhi. We start slow, we take regular walking breaks, and nobody gets left behind.
+              </p>
+              <div class="hero-support-line">
+                <svg class="proof-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <span>You do not need any running experience. Just your everyday trainers.</span>
+              </div>
+              
+              <div class="hero-cta-wrapper">
+                <a href="join.html" class="btn-cta btn-cta-large">
+                  Join the Run Club
+                </a>
+                <span class="hero-date-note">
+                  Next group starts Monday, November 2, 2026 at Central Park, CP
+                </span>
+              </div>
+
+              <div class="hero-proof-strip">
+                <div class="proof-item">
+                  <svg class="proof-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                  <span>Zero pressure pace</span>
+                </div>
+                <div class="proof-item">
+                  <svg class="proof-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                  <span>Walk intervals built in</span>
+                </div>
+                <div class="proof-item">
+                  <svg class="proof-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                  <span>Coaches stay at the back</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 2: REASSURANCE (DIRECTLY BELOW HERO) -->
+            <div id="reassurance" class="reassurance-block" aria-labelledby="reassurance-title">
+              <span class="stage-eyebrow">Section 2 • Reassurance</span>
+              <h2 id="reassurance-title">Worried you are too slow? Read this first.</h2>
+              <p>
+                Most people quit running because they sprint out the door on day one, burn out their lungs in two minutes, and feel terrible. Here is how we do it:
+              </p>
+
+              <div class="reassurance-stack">
+                <div class="card">
+                  <div class="card-icon-wrap" aria-hidden="true">
+                    <svg class="card-icon" viewBox="0 0 24 24">
+                      <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/>
+                    </svg>
+                  </div>
+                  <h3>Walking is built into the plan.</h3>
+                  <p>
+                    When the watch says walk, everyone walks. That is how you build stamina without feeling awful. Walk breaks are scheduled and celebrated.
+                  </p>
+                </div>
+
+                <div class="card">
+                  <div class="card-icon-wrap" aria-hidden="true">
+                    <svg class="card-icon" viewBox="0 0 24 24">
+                      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                    </svg>
+                  </div>
+                  <h3>Nobody gets left behind.</h3>
+                  <p>
+                    Coach Jon Dow stays at the very back of the pack the whole time. You will never be running on your own or holding anyone up.
+                  </p>
+                </div>
+
+                <div class="card">
+                  <div class="card-icon-wrap" aria-hidden="true">
+                    <svg class="card-icon" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                    </svg>
+                  </div>
+                  <h3>Wear what you have.</h3>
+                  <p>
+                    You do not need expensive running gear or a certain body type. Normal trainers and comfortable clothes are plenty.
+                  </p>
+                </div>
+              </div>
+
+              <div style="margin-top: 2rem;">
+                <a href="join.html" class="btn-cta">
+                  Join the Run Club
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: STICKY RUNNER SHOWCASE TRACKING THE FULL SCROLL -->
+          <div class="narrative-right-sticky">
+            <div class="integrated-runner-frame">
+              <canvas id="hero-runner-canvas"></canvas>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 3: FIRST SESSION
+         ======================================================================== -->
+    <section id="first-session" class="section-spacing" style="background-color: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);" aria-labelledby="first-session-title">
+      <div class="container">
+        <div class="section-header-block">
+          <h2 id="first-session-title">What happens at session one</h2>
+          <p>
+            Here is the exact schedule for your first 45 minutes so you know what to expect:
+          </p>
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-step">
+            <div class="timeline-badge-wrap">
+              <span class="timeline-time-badge">00–10 min</span>
+              <div class="timeline-connector" aria-hidden="true"></div>
+            </div>
+            <div class="timeline-body">
+              <h3>Say hello</h3>
+              <p>
+                Meet Coach Jon Dow and grab your name tag at Central Park Inner Circle, Connaught Place (near Gate 2). A relaxed, friendly introduction.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-badge-wrap">
+              <span class="timeline-time-badge">10–20 min</span>
+              <div class="timeline-connector" aria-hidden="true"></div>
+            </div>
+            <div class="timeline-body">
+              <h3>Easy warm-up</h3>
+              <p>
+                We walk together on the paved park path and do a few simple leg stretches. No jumping jacks or burpees, just getting your joints loose.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-badge-wrap">
+              <span class="timeline-time-badge">20–35 min</span>
+              <div class="timeline-connector" aria-hidden="true"></div>
+            </div>
+            <div class="timeline-body">
+              <h3>The run-walk</h3>
+              <p>
+                We jog gently for 60 seconds, then walk for 90 seconds. You set whatever speed feels comfortable.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-badge-wrap">
+              <span class="timeline-time-badge">35–45 min</span>
+              <div class="timeline-connector" aria-hidden="true"></div>
+            </div>
+            <div class="timeline-body">
+              <h3>Cool down</h3>
+              <p>
+                A quick stretch under the park trees, water, and time to ask any questions before heading home.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mid-cta-block">
+          <a href="join.html" class="btn-cta">
+            Join the Run Club
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 4: 30-DAY PLAN
+         ======================================================================== -->
+    <section id="plan" class="section-spacing" aria-labelledby="plan-title">
+      <div class="container">
+        <div class="section-header-block">
+          <h2 id="plan-title">The 30-day plan</h2>
+          <p>
+            Four simple weeks to get your legs and lungs used to running:
+          </p>
+        </div>
+
+        <div class="plan-grid">
+          <div class="plan-card">
+            <span class="week-chip">Week 1</span>
+            <h3>Getting started</h3>
+            <p>
+              1 minute of easy jogging, 2 minutes of walking. The only goal is showing up and learning how your body feels.
+            </p>
+          </div>
+
+          <div class="plan-card">
+            <span class="week-chip">Week 2</span>
+            <h3>Finding your pace</h3>
+            <p>
+              We teach you how to jog at a talking pace so you do not run out of breath. The intervals gently lengthen.
+            </p>
+          </div>
+
+          <div class="plan-card">
+            <span class="week-chip">Week 3</span>
+            <h3>Stretching the distance</h3>
+            <p>
+              Your running intervals get a little longer, but your body is ready for it now. Your breathing feels steady.
+            </p>
+          </div>
+
+          <div class="plan-card plan-card-finish">
+            <span class="week-chip" style="background-color: var(--color-accent); color: #FFFFFF;">Week 4</span>
+            <h3>The 20-minute run</h3>
+            <p>
+              You jog 20 minutes steadily alongside your group. No stopping, no gasping for air. You cross the 30-day mark.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 5: WHAT YOU GET
+         ======================================================================== -->
+    <section id="included" class="section-spacing" style="background-color: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);" aria-labelledby="included-title">
+      <div class="container">
+        <div class="section-header-block">
+          <h2 id="included-title">What is included</h2>
+          <p>
+            Everything you get with the 30-day beginner program:
+          </p>
+        </div>
+
+        <div class="included-layout">
+          <div class="included-list">
+            <div class="included-item">
+              <svg class="item-check-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <div>
+                <strong>Three coached morning meetups each week</strong>
+                <p>In-person sessions at Central Park, Connaught Place on Tuesdays, Thursdays and Saturdays at 6:00 AM.</p>
+              </div>
+            </div>
+
+            <div class="included-item">
+              <svg class="item-check-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <div>
+                <strong>Supportive beginner coaches</strong>
+                <p>Local coaches led by Head Coach Jon Dow who run at your pace and never leave anyone behind.</p>
+              </div>
+            </div>
+
+            <div class="included-item">
+              <svg class="item-check-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <div>
+                <strong>Weekly session guide</strong>
+                <p>A simple printout and phone guide with your weekly sessions for rest and recovery days.</p>
+              </div>
+            </div>
+
+            <div class="included-item">
+              <svg class="item-check-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <div>
+                <strong>Warmup and cooldown guide</strong>
+                <p>Short routine you can do anywhere to protect your knees and shins.</p>
+              </div>
+            </div>
+
+            <div class="included-item">
+              <svg class="item-check-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <div>
+                <strong>Friendly group chat</strong>
+                <p>A private WhatsApp group to ask questions, share updates, and stay connected.</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="pricing-card" aria-label="Program Enrollment Details">
+            <span class="pricing-badge">Simple Pricing</span>
+            <h3>30-Day Beginner Pass</h3>
+            <div class="price-value">
+              <div class="price-amount">2-Day Free Trial</div>
+              <p style="margin-top: 0.35rem; color: var(--color-neon-citron); font-weight: 600;">Then ₹800 for the full month</p>
+            </div>
+            <p>Everything listed on the left is included. No surprise fees or equipment purchases.</p>
+            <a href="join.html" class="btn-cta" style="width: 100%;">
+              Join the Run Club
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 6: COMMON QUESTIONS (FAQ)
+         ======================================================================== -->
+    <section id="faq" class="section-spacing" aria-labelledby="faq-title">
+      <div class="container container-narrow">
+        <div class="section-header-block">
+          <h2 id="faq-title">Common questions</h2>
+          <p>
+            Honest answers to the most common beginner worries:
+          </p>
+        </div>
+
+        <div class="faq-container">
+          <details class="faq-item" open>
+            <summary class="faq-summary">
+              <span>I get out of breath walking up stairs. Can I actually do this?</span>
+              <svg class="faq-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </summary>
+            <div class="faq-answer">
+              Yes. We start with 60 seconds of gentle jogging, followed by plenty of walking. You do not need to be in shape before you come. Getting in shape is why we are here.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>What if I am the slowest person in the group?</span>
+              <svg class="faq-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </summary>
+            <div class="faq-answer">
+              Coach Jon Dow stays right at the back the entire time, and we regroup at every turn. You will never hold anyone up.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>Do I need special running shoes?</span>
+              <svg class="faq-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </summary>
+            <div class="faq-answer">
+              No. A standard pair of clean trainers and everyday sportswear will do fine for the first month.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>What if I miss a session?</span>
+              <svg class="faq-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </summary>
+            <div class="faq-answer">
+              Don't worry about it. We post the workout in our group chat so you can do it on your own time if you want to.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>Where and when do we meet?</span>
+              <svg class="faq-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </summary>
+            <div class="faq-answer">
+              We meet at Central Park Inner Circle, Connaught Place (CP) every Tuesday, Thursday and Saturday at 6:00 AM.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 7: CLOSING CALL TO ACTION
+         ======================================================================== -->
+    <section id="cta" class="section-spacing cta-section" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-box">
+          <h2 id="cta-title">Ready for your first run?</h2>
+          <p>
+            You do not need to be fast, and you do not need to run the whole time. You just need to show up in your trainers. We will take care of the rest together.
+          </p>
+          <a href="join.html" class="btn-cta btn-cta-large">
+            Join the Run Club
+          </a>
+          <div class="cta-cohort-note">
+            Our next beginner group starts on Monday, November 2, 2026 at Central Park, Connaught Place.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       SECTION 8: FOOTER
+       ======================================================================== -->
+  <footer id="footer" class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Run Club Delhi (Connaught Place)</div>
+          <p>A beginner running group meeting weekly in Connaught Place, Delhi.</p>
+          <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+            Meeting spot: Central Park, Inner Circle, Connaught Place, New Delhi (Opposite Rajiv Chowk Metro Gate 2). Paved, flat, accessible paths.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Contact & Help</h3>
+          <p>Questions? Email us at runwithus4real@gmail.com or call +91 98100 24810.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Run Club Delhi. All rights reserved.</div>
+        <div>Wheelchair accessible meeting point and paved park paths.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MOBILE STICKY CTA BAR
+       ======================================================================== -->
+  <div class="mobile-sticky-bar" id="sticky-bar" aria-label="Quick Action">
+    <div>
+      <div class="sticky-bar-text">Run Club 30 Days</div>
+      <div class="sticky-bar-sub">Central Park, CP • 6:00 AM</div>
+    </div>
+    <a href="join.html" class="btn-cta btn-sticky">
+      Join the Run Club
+    </a>
+  </div>
+
+  <!-- Pinned GSAP & ScrollTrigger Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Core Interactive Script & 130-Frame Scroll Engine -->
+  <script>
+    (() => {
+      'use strict';
+
+      const TOTAL_FRAMES = 130;
+      const LERP_FACTOR = 0.12;
+
+      function getFrameSrc(index) {
+        const frameNum = String(index + 1).padStart(4, '0');
+        return `extracted_frames/frame_${frameNum}.jpg`;
+      }
+
+      const canvas = document.getElementById('hero-runner-canvas');
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d', { alpha: false });
+      const loaderBar = document.getElementById('loader-bar');
+
+      const images = new Array(TOTAL_FRAMES);
+      let loadedCount = 0;
+      let targetIndex = 0;
+      let currentIndex = 0;
+      let lastDrawnIndex = -1;
+      let lastDrawnWasExact = false;
+      let isAllLoaded = false;
+
+      function handleResize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const container = canvas.parentElement;
+        const rect = container ? container.getBoundingClientRect() : canvas.getBoundingClientRect();
+        const displayWidth = Math.round(rect.width) || 360;
+        const displayHeight = Math.round(rect.height) || Math.round(displayWidth * (16 / 9));
+
+        const targetW = Math.round(displayWidth * dpr);
+        const targetH = Math.round(displayHeight * dpr);
+
+        if (canvas.width !== targetW || canvas.height !== targetH) {
+          canvas.width = targetW;
+          canvas.height = targetH;
+          lastDrawnIndex = -1;
+        }
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+      }
+
+      function getBestAvailableImage(idx) {
+        if (images[idx] && images[idx].complete && images[idx].naturalWidth > 0) {
+          return { img: images[idx], isExact: true, actualIndex: idx };
+        }
+        for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+          const prev = idx - offset;
+          if (prev >= 0 && images[prev]?.complete && images[prev]?.naturalWidth > 0) {
+            return { img: images[prev], isExact: false, actualIndex: prev };
+          }
+          const next = idx + offset;
+          if (next < TOTAL_FRAMES && images[next]?.complete && images[next]?.naturalWidth > 0) {
+            return { img: images[next], isExact: false, actualIndex: next };
+          }
+        }
+        return { img: null, isExact: false, actualIndex: -1 };
+      }
+
+      function renderFrame(index) {
+        const { img, isExact } = getBestAvailableImage(index);
+        if (!img) return;
+
+        const cW = canvas.width;
+        const cH = canvas.height;
+        const iW = img.naturalWidth;
+        const iH = img.naturalHeight;
+
+        if (!iW || !iH || !cW || !cH) return;
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
+        // Deep obsidian background fill
+        ctx.fillStyle = '#090B0E';
+        ctx.fillRect(0, 0, cW, cH);
+
+        // Native 9:16 aspect fit (never stretches or distorts)
+        const scale = Math.min(cW / iW, cH / iH);
+        const drawW = Math.round(iW * scale);
+        const drawH = Math.round(iH * scale);
+        const drawX = Math.round((cW - drawW) * 0.5);
+        const drawY = Math.round((cH - drawH) * 0.5);
+
+        // Subtle ambient track amber glow behind runner
+        ctx.save();
+        const glow = ctx.createRadialGradient(cW * 0.5, cH * 0.5, 30 * dpr, cW * 0.5, cH * 0.5, drawW * 0.7);
+        glow.addColorStop(0, 'rgba(230, 81, 0, 0.22)');
+        glow.addColorStop(1, 'rgba(9, 11, 14, 0)');
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, cW, cH);
+        ctx.restore();
+
+        // Render runner image razor-sharp
+        ctx.drawImage(img, drawX, drawY, drawW, drawH);
+
+        lastDrawnIndex = index;
+        lastDrawnWasExact = isExact;
+      }
+
+      function preloadImages() {
+        const firstImg = new Image();
+        firstImg.onload = () => {
+          loadedCount++;
+          handleResize();
+          renderFrame(0);
+          loadRemainingFrames();
+        };
+        firstImg.onerror = () => {
+          console.error('Failed to load initial runner frame:', firstImg.src);
+          loadRemainingFrames();
+        };
+        firstImg.src = getFrameSrc(0);
+        images[0] = firstImg;
+
+        if (firstImg.complete && firstImg.naturalWidth > 0) {
+          handleResize();
+          renderFrame(0);
+        }
+      }
+
+      function loadRemainingFrames() {
+        const batchSize = 12;
+        let nextIndex = 1;
+
+        function loadBatch() {
+          const limit = Math.min(nextIndex + batchSize, TOTAL_FRAMES);
+
+          for (let i = nextIndex; i < limit; i++) {
+            const img = new Image();
+            img.onload = () => {
+              loadedCount++;
+              updateProgress();
+            };
+            img.onerror = () => {
+              loadedCount++;
+              updateProgress();
+            };
+            img.src = getFrameSrc(i);
+            images[i] = img;
+          }
+
+          nextIndex = limit;
+
+          if (nextIndex < TOTAL_FRAMES) {
+            requestAnimationFrame(loadBatch);
+          }
+        }
+
+        loadBatch();
+      }
+
+      function updateProgress() {
+        if (!loaderBar) return;
+        const progress = (loadedCount / TOTAL_FRAMES) * 100;
+        loaderBar.style.width = `${progress}%`;
+        if (loadedCount >= TOTAL_FRAMES && !isAllLoaded) {
+          isAllLoaded = true;
+          loaderBar.classList.add('done');
+        }
+      }
+
+      function tick() {
+        const delta = targetIndex - currentIndex;
+        currentIndex += delta * LERP_FACTOR;
+        const roundedIndex = Math.round(currentIndex);
+
+        if (roundedIndex !== lastDrawnIndex || !lastDrawnWasExact) {
+          renderFrame(roundedIndex);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      // Update Mobile Sticky Bottom Bar visibility
+      function updateStickyBar() {
+        const stickyBar = document.getElementById('sticky-bar');
+        if (!stickyBar) return;
+        if (window.innerWidth < 768) {
+          const hero = document.getElementById('hero');
+          const isPastHero = hero ? hero.getBoundingClientRect().bottom < 80 : window.scrollY > 300;
+          if (isPastHero) {
+            stickyBar.classList.add('visible');
+          } else {
+            stickyBar.classList.remove('visible');
+          }
+        }
+      }
+
+      // Native scroll listener guarantees smooth scrubbing across Section 1 & 2
+      function onScroll() {
+        const wrapper = document.getElementById('hero-reassurance-wrapper');
+        if (!wrapper) return;
+        const rect = wrapper.getBoundingClientRect();
+        const totalDistance = wrapper.offsetHeight - window.innerHeight;
+        if (totalDistance > 0) {
+          const currentScrolled = -rect.top;
+          const progress = Math.max(0, Math.min(1, currentScrolled / totalDistance));
+          targetIndex = Math.min(Math.floor(progress * TOTAL_FRAMES), TOTAL_FRAMES - 1);
+        }
+        updateStickyBar();
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', () => {
+        handleResize();
+        onScroll();
+        renderFrame(Math.round(currentIndex));
+      }, { passive: true });
+      window.addEventListener('load', () => {
+        handleResize();
+        onScroll();
+        renderFrame(Math.round(currentIndex));
+      });
+
+      // Start engine
+      handleResize();
+      preloadImages();
+      onScroll();
+      requestAnimationFrame(tick);
+
+      // Connect to GSAP ScrollTrigger if available for ultra-smooth scrubbing
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Top reading progress bar
+        gsap.to("#scroll-progress", {
+          width: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: "body",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.15
+          }
+        });
+
+        // Scrub runner animation across Hero + Reassurance wrapper
+        ScrollTrigger.create({
+          trigger: "#hero-reassurance-wrapper",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.25,
+          onUpdate: (self) => {
+            targetIndex = Math.min(Math.floor(self.progress * TOTAL_FRAMES), TOTAL_FRAMES - 1);
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
